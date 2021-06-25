@@ -21,7 +21,7 @@ void setup() {
   
   // Setting frequency-scaling to 20%
   digitalWrite(S0,HIGH);
-  digitalWrite(S1,LOW);
+  digitalWrite(S1,HIGH);
   
   Serial.begin(9600);
 }
