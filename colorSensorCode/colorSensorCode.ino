@@ -4,13 +4,15 @@
  *  
  */
  
-#define S0 4
-#define S1 3
-#define S2 7
+#define S0 3
+#define S1 4
+#define S2 6
 #define S3 5
-#define sensorOut 6
+#define sensorOut 7
 
-int frequency = 0;
+int redfrequency = 0;
+int grefrequency= 0;
+int blfrequency= 0;
 
 void setup() {
   pinMode(S0, OUTPUT);
@@ -21,7 +23,7 @@ void setup() {
   
   // Setting frequency-scaling to 20%
   digitalWrite(S0,HIGH);
-  digitalWrite(S1,HIGH);
+  digitalWrite(S1,LOW);
   
   Serial.begin(9600);
 }
@@ -31,7 +33,7 @@ void loop() {
   digitalWrite(S2,LOW);
   digitalWrite(S3,LOW);
   // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  redfrequency = pulseIn(sensorOut, LOW);
   //Remaping the value of the frequency to the RGB Model of 0 to 255
   //frequency = map(frequency, 25,72,255,0);
   // Printing the value on the serial monitor
@@ -44,12 +46,12 @@ void loop() {
   digitalWrite(S2,HIGH);
   digitalWrite(S3,HIGH);
   // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  grefrequency = pulseIn(sensorOut, LOW);
   //Remaping the value of the frequency to the RGB Model of 0 to 255
   //frequency = map(frequency, 30,90,255,0);
   // Printing the value on the serial monitor
   Serial.print("G= ");//printing name
-  Serial.print(frequency);//printing RED color frequency
+  Serial.print(grefrequency);//printing RED color frequency
   Serial.print("  ");
   delay(100);
 
@@ -57,12 +59,12 @@ void loop() {
   digitalWrite(S2,LOW);
   digitalWrite(S3,HIGH);
   // Reading the output frequency
-  frequency = pulseIn(sensorOut, LOW);
+  blfrequency = pulseIn(sensorOut, LOW);
   //Remaping the value of the frequency to the RGB Model of 0 to 255
   //frequency = map(frequency, 25,70,255,0);
   // Printing the value on the serial monitor
   Serial.print("B= ");//printing name
-  Serial.print(frequency);//printing RED color frequency
+  Serial.print(blfrequency);//printing RED color frequency
   Serial.println("  ");
   delay(100);
 }
